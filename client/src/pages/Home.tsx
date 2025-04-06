@@ -49,21 +49,50 @@ function Home() {
     <div className="bg-chocolate-cosmos-100 h-svh w-screen flex flex-col justify-center items-center text-white">
         {isLoading ? <h1>Loading...</h1> : 
             <>
-                <h1 className="text-redwood-500">Chat<span className="text-apricot-500">Now</span></h1>
+                <div className="flex flex-row"><p className='text-redwood-500 text-4xl md:text-6xl lg:text-7xl'>Chat</p><span className="text-apricot-500 text-4xl md:text-6xl lg:text-7xl">Now</span></div>
                 <div className="flex flex-col gap-4 mt-4">
                     {
                       !joinMode ? 
-                      <>
-                        <button className="bg-redwood-500 px-3 py-1 text-center rounded-sm text-2xl hover:bg-redwood-400 transition-colors duration-100 cursor-pointer" onClick={()=>createRoom()}>Create</button>
-                        <button className="bg-redwood-500 px-3 py-1 text-center rounded-sm text-2xl hover:bg-redwood-400 transition-colors duration-100 cursor-pointer" onClick={()=>setJoinMode(true)}>Join</button>
-                      </>
+                        <div className="flex flex-col items-center gap-6 w-full max-w-md">
+                        <p className="text-lg md:text-xl font-semibold text-center">
+                          Start a chat, share the room, and that’s it.
+                        </p>
+                        <button 
+                          className="bg-redwood-500 w-full px-6 py-3 text-center rounded-lg text-lg md:text-2xl hover:bg-redwood-400 transition-colors duration-150 cursor-pointer" 
+                          onClick={() => createRoom()}
+                        >
+                          Create Room
+                        </button>
+                        <button 
+                          className="bg-redwood-500 w-full px-6 py-3 text-center rounded-lg text-lg md:text-2xl hover:bg-redwood-400 transition-colors duration-150 cursor-pointer" 
+                          onClick={() => setJoinMode(true)}
+                        >
+                          Join Room
+                        </button>
+                        </div>
                       :
-                      <>
-                        <p>Room code</p>
-                        <input autoComplete="off" value={roomCode} onChange={e=>setRoomCode(e.target.value.toUpperCase())} type="text" className='border-red-500 border-2 outline-0 rounded-sm p-2.5 text-3xl' />
-                        <button className='bg-redwood-500 px-3 py-1 text-center rounded-sm text-2xl hover:bg-redwood-400 transition-colors duration-100 cursor-pointer'  onClick={()=>navigate('/chat/'+ roomCode)}>Join</button>
-                        <button className='bg-redwood-500 px-3 py-1 text-center rounded-sm text-2xl hover:bg-redwood-400 transition-colors duration-100 cursor-pointer' onClick={()=>setJoinMode(false)}>Return</button>
-                      </>
+                        <div className="flex flex-col items-center gap-4 w-full max-w-md">
+                        <p className="text-lg font-semibold">Enter Room Code</p>
+                        <input 
+                          autoComplete="off" 
+                          value={roomCode} 
+                          onChange={e => setRoomCode(e.target.value.toUpperCase())} 
+                          type="text" 
+                          className="border-2 border-redwood-500 outline-none rounded-md p-2.5 text-xl w-full text-center"
+                        />
+                        <button 
+                          className="bg-redwood-500 w-full px-4 py-2 text-center rounded-md text-xl hover:bg-redwood-400 transition-colors duration-150 cursor-pointer"  
+                          onClick={() => navigate('/chat/' + roomCode)}
+                        >
+                          Join
+                        </button>
+                        <button 
+                          className="bg-gray-500 w-full px-4 py-2 text-center rounded-md text-xl hover:bg-gray-400 transition-colors duration-150 cursor-pointer" 
+                          onClick={() => setJoinMode(false)}
+                        >
+                          Return
+                        </button>
+                        </div>
                     }
                 </div>
             </>

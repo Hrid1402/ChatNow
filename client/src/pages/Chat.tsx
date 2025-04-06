@@ -49,26 +49,28 @@ function Chat() {
     }
 
      async function joinProcess(){
-        let name =  null;
+        let name = 'Anonymous';
         const result = await Swal.fire({
             title: 'Enter your name',
             input: 'text',
             inputPlaceholder: 'Your name here...',
             inputAttributes: {
-                maxlength: '20',
+            maxlength: '20',
             },
             confirmButtonColor: '#8e2e39',
             showCancelButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
             inputValidator: (value) => {
-                if (!value.trim()) {
-                    return 'Name cannot be empty!';
-                }
-                return null;
+            if (!value.trim()) {
+                return 'Name cannot be empty!';
+            }
+            return null;
             },
         })
-        name = result.value;
-        if(name === null || name === ''){
-            name = 'Anonymous';
+        
+        if(result.value !== undefined){
+            name = result.value;
         }
         setUsername(name);
         socket.emit('joinRoom', {roomCode:id, name:name});
@@ -162,10 +164,10 @@ function Chat() {
                 {
                     showRoomInf &&
                     <>
-                        <h2 className="sm:text-4xl text-3xl">Chat code: {id}</h2>
+                        <h2 className="sm:text-4xl text-3xl"><span className="text-redwood-600 font-medium">Room code:</span> {id}</h2>
                         <div className="flex flex-col min-[360px]:flex-row items-center gap-2 justify-center mb-2 w-full max-w-[500px] py-1.5 px-0.5">
                             <button 
-                                className="sm:text-2xl text-sm relative w-full min-[400px]:w-auto m-2.5 bg-amber-100 text-chocolate-cosmos-100 px-3 py-1.5 rounded-sm cursor-copy text-center" 
+                                className="sm:text-2xl text-sm relative w-full min-[400px]:w-auto m-2.5 bg-amber-100 text-chocolate-cosmos-100 px-3 py-1.5 rounded-sm cursor-pointer text-center" 
                                 onClick={() => {
                                     navigator.clipboard.writeText(currentUrl);
                                     const notification = document.createElement('div');
@@ -178,7 +180,7 @@ function Chat() {
                                     }, 2000);
                                 }}
                             >
-                                {currentUrl}
+                                {'Click to copy your chat link'}
                             </button>
                             <button 
                                 className="select-none size-7 flex items-center justify-center cursor-pointer" 
@@ -193,8 +195,8 @@ function Chat() {
                         <a href={'/'} 
                             className="bg-redwood-400 text-white px-2 py-1 mb-2 rounded-sm text-sm sm:text-lg hover:bg-redwood-500 transition-colors flex items-center gap-1"><img className="size-5" src={icon_exit} alt="" />Left Room</a>
                         {
-                            showRoomInf ? <button className="bg-redwood-400 text-white px-2 py-1 mb-2 rounded-sm text-sm sm:text-lg hover:bg-redwood-500 transition-colors flex items-center" onClick={()=>{setShowRoomInf(false), setShowQr(false)}}>Hide Room Info</button>:
-                            <button className="bg-redwood-400 text-white px-2 py-1 mb-2 rounded-sm text-sm sm:text-lg hover:bg-redwood-500 transition-colors flex items-center" onClick={()=>setShowRoomInf(true)}>Show Room Info</button>
+                            showRoomInf ? <button className="bg-redwood-400 text-white px-2 py-1 mb-2 rounded-sm text-sm sm:text-lg hover:bg-redwood-500 transition-colors flex items-center hover:cursor-pointer" onClick={()=>{setShowRoomInf(false), setShowQr(false)}}>Hide Room Info</button>:
+                            <button className="bg-redwood-400 text-white px-2 py-1 mb-2 rounded-sm text-sm sm:text-lg hover:bg-redwood-500 transition-colors flex items-center hover:cursor-pointer" onClick={()=>setShowRoomInf(true)}>Show Room Info</button>
                         }
                     </div>
                     <div className={`${showQr ? 'flex' : 'hidden'} flex-col items-center justify-center mb-4 w-[500px] py-1.5 px-0.5`}>

@@ -1,0 +1,77 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@import "tailwindcss";
+@theme {
+  --color-chocolate-cosmos-100: #0e0406;
+  --color-chocolate-cosmos-200: #1c070d;
+  --color-chocolate-cosmos-300: #290b13;
+  --color-chocolate-cosmos-400: #370e19;
+  --color-chocolate-cosmos-500: #461220;
+  --color-chocolate-cosmos-600: #88233e;
+  --color-chocolate-cosmos-700: #cb355d;
+  --color-chocolate-cosmos-800: #dc7893;
+  --color-chocolate-cosmos-900: #eebcc9;
+
+  --color-cordovan-100: #1c090b;
+  --color-cordovan-200: #391317;
+  --color-cordovan-300: #551c22;
+  --color-cordovan-400: #71262d;
+  --color-cordovan-500: #8c2f39;
+  --color-cordovan-600: #be3f4c;
+  --color-cordovan-700: #cf6e78;
+  --color-cordovan-800: #df9fa5;
+  --color-cordovan-900: #efcfd2;
+
+  --color-redwood-100: #230b0e;
+  --color-redwood-200: #47171d;
+  --color-redwood-300: #6a222b;
+  --color-redwood-400: #8e2e39;
+  --color-redwood-500: #b23a48;
+  --color-redwood-600: #c95966;
+  --color-redwood-700: #d7828c;
+  --color-redwood-800: #e4acb2;
+  --color-redwood-900: #f2d5d9;
+
+  --color-melon-100: #530b03;
+  --color-melon-200: #a51606;
+  --color-melon-300: #f6220b;
+  --color-melon-400: #f96d5e;
+  --color-melon-500: #fcb9b2;
+  --color-melon-600: #fdc6c0;
+  --color-melon-700: #fdd4d0;
+  --color-melon-800: #fee3e0;
+  --color-melon-900: #fef1ef;
+
+  --color-apricot-100: #561c01;
+  --color-apricot-200: #ad3903;
+  --color-apricot-300: #fb580c;
+  --color-apricot-400: #fd9362;
+  --color-apricot-500: #fed0bb;
+  --color-apricot-600: #fed8c7;
+  --color-apricot-700: #fee2d5;
+  --color-apricot-800: #ffece3;
+  --color-apricot-900: #fff5f1;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-height: 100svh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
